@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid px-0">
+
+</div>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Image Upload</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div id="upload-area" class="upload-area">
+                <div class="upload-icon">📁</div>
+                <p>Click or drag and drop your image here</p>
+                <input type="file" id="file-input" class="d-none" accept="image/*">
+            </div>
+            <div id="file-name" class="file-name text-center mt-3"></div>
+            <button id="upload-btn" class="btn btn-primary w-100 mt-3 d-none">Upload</button>
+            <div id="response-message" class="alert mt-3 d-none"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+<script>
+    const uploadArea = document.getElementById('upload-area');
+    const fileInput = document.getElementById('file-input');
+    const fileName = document.getElementById('file-name');
+    const uploadBtn = document.getElementById('upload-btn');
+    const responseMessage = document.getElementById('response-message');
+
+    uploadArea.addEventListener('click', () => fileInput.click());
+
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.classList.add('bg-light');
+    });
+
+    uploadArea.addEventListener('dragleave', () => {
+        uploadArea.classList.remove('bg-light');
+    });
+
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove('bg-light');
+        // console.log(e.dataTransfer.files);
+        handleFiles(e.dataTransfer.files);
+    });
+
+    fileInput.addEventListener('change', () => handleFiles(fileInput.files));
+
+    function handleFiles(files) {
+        if (files.length > 0) {
+            const file = files[0];
+            uploadBtn.classList.remove('d-none');
+            uploadArea.classList.add('pulse');
+            fileName.textContent = file.name;
+            fileInput.files = files;
+        }
+        else{
+            alert('Please select a file to upload');
+        }
+    }
+
+    uploadBtn.addEventListener('click', () => {
+        const file = fileInput.files[0];
+        console.log(fileInput.files);
+        if (file) {
+            uploadFile(file);
+        }
+    });
+
+    function uploadFile(file) {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        uploadBtn.textContent = 'Uploading...';
+        uploadBtn.disabled = true;
+
+        fetch('/upload', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                uploadBtn.textContent = 'Upload';
+                uploadBtn.disabled = false;
+                uploadArea.classList.remove('pulse');
+
+                responseMessage.classList.remove('d-none', 'alert-success', 'alert-danger');
+                if (data.success) {
+                    responseMessage.classList.add('alert-success');
+                    responseMessage.textContent = 'File uploaded successfully!';
+                } else {
+                    responseMessage.classList.add('alert-danger');
+                    responseMessage.textContent = 'Error uploading file: ' + data.message;
+                }
+            })
+            .catch(error => {
+                uploadBtn.textContent = 'Upload';
+                uploadBtn.disabled = false;
+                uploadArea.classList.remove('pulse');
+
+                responseMessage.classList.remove('d-none', 'alert-success', 'alert-danger');
+                responseMessage.classList.add('alert-danger');
+                responseMessage.textContent = 'Error uploading file: ' + error.message;
+            });
+    }
+</script>
+{% endblock %}
+{% block css %}
+
+<style>
+    .upload-area {
+        border: 2px dashed #007bff;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        transition: all 0.3s ease;
+        background-color: #abd3e5;
+        cursor: pointer;
+    }
+
+    .upload-area:hover {
+        background-color: #f8f9fa;
+        transform: scale(1.02);
+    }
+
+    .upload-icon {
+        font-size: 48px;
+        color: #007bff;
+        margin-bottom: 10px;
+    }
+
+    .file-name {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.05);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .pulse {
+        animation: pulse 1s infinite;
+    }
+</style>
+
+{% endblock %}
+{% block head %}{% endblock %}

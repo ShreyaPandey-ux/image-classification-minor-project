@@ -1,11 +1,13 @@
 <style>
     .alert {
         position: fixed;
-        top: 5%;
-        right: 10px;
+        bottom: 0;
+        left: 0;
         z-index: 9999;
         width: 400px;
-        margin: 10px;
+        margin: 20px;
+        border-radius: 100px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 </style>
 {% with messages = get_flashed_messages(with_categories=true) %}
@@ -35,27 +37,3 @@
 </script>
 
 {% endwith %}
- 20 changes: 20 additions & 0 deletions20  
-templates/results.html
-Original file line number	Diff line number	Diff line change
-@@ -0,0 +1,20 @@
-{% extends 'base.html' %}
-{% block content %}
-<div class="container-fluid px-0">
-
-</div>
-<div class="container py-5">
-
-</div>
-{% endblock %}
-{% block js %}
-<script>
-
-</script>
-{% endblock %}
-{% block css %}
-<style>
-
-</style>
-{% endblock %}
-{% block head %}{% endblock %}
