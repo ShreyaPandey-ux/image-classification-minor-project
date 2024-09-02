@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid px-0">
+
+</div>
+<div class="container py-5">
+    <div class="row">
+        {% for item in images %}
+            <div class="col-md-3 mb-3">
+                <div class="card border border-primary">
+                    <div class="card-image">
+                        <img src="/static/uploads/{{item}}" alt="images" class="gallery-img img-fluid">
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex gap-2">
+                            <a href="/delete/{{item}}" class="btn btn-outline-dark">Delete</a>
+                            <a href="/classify/{{item}}" class="btn btn-outline-dark">Classify</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+<script>
+</script>
+{% endblock %}
+{% block css %}
+<style>
+    .gallery-img{
+     height: 200px;
+     object-fit: cover;   
+    }
+    
+</style>
+{% endblock %}
+{% block head %}{% endblock %}
