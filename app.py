@@ -17,6 +17,11 @@ def index():
     flash('Welcome to the Image Classification App', 'info')
     return render_template('index.html')
 
+@app.route('/gallery')
+def gallery():
+    images = os.listdir("static/uploads")
+    return render_template("gallery.html", images=images)
+
 @app.route('/about')
 def about():
     return render_template('about.html')
@@ -43,13 +48,13 @@ def delete(image):
     filepath = os.path.join('static/uploads', image)
     os.remove(filepath)
     flash('File deleted successfully', 'success')
-    return redirect(url_for('upload'))
+    return redirect(url_for('gallery'))
 
 @app.route('/download/<image>')
 def download(image):
     return send_from_directory('static/uploads', image, as_attachment=True)
 
-@app.route('/select/<filename>')
+@app.route('/classify/<filename>')
 def select(filename):
     BASE_DIR = 'static/uploads'
     filepath = os.path.join(BASE_DIR, secure_filename(filename))
