@@ -38,27 +38,21 @@ def upload():
             return jsonify({'success': False, 'message': 'File type not allowed'})
     return render_template('form.html')
 
-@app.route('/gallery')
-def gallery():
-    images = os.listdir("static/uploads")
-    return render_template("gallery.html", images=images)
-
-
 @app.route('/delete/<image>')
 def delete(image):
     filepath = os.path.join('static/uploads', image)
     os.remove(filepath)
     flash('File deleted successfully', 'success')
-    return redirect(url_for('gallery'))
+    return redirect(url_for('upload'))
 
 @app.route('/download/<image>')
 def download(image):
     return send_from_directory('static/uploads', image, as_attachment=True)
 
-@app.route('/classify/<filename>')
+@app.route('/select/<filename>')
 def select(filename):
     BASE_DIR = 'static/uploads'
-    filepath = os.path.join(BASE_DIR, filename)
+    filepath = os.path.join(BASE_DIR, secure_filename(filename))
     session['file'] = "/"+filepath
     classification = classify_image(filepath)
     return render_template('results.html', classification=classification)
