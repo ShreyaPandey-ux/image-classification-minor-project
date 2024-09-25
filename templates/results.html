@@ -4,6 +4,36 @@
 
 </div>
 <div class="container py-5">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card w-96 bg-base-100 shadow-xl">
+                <figure><img src="{{session.file}}" alt="Shoes" class="img-fluid" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Classification</h2>
+                    {% for item in classification %}
+                    <div class="d-grid mb-3 fw-bolder">
+                        <div >
+                            {% set score = item.score * 100 %}
+                            {{item.category_name|title}}
+                        </div>
+                        <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="{{score}}"
+                            aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar overflow-visible text-dark" style="width: {{score}}%">
+                                <span class="label fw-lighter px-5" style="font-size: 10px;">{{item.display_name}} {{score}}%</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    {% endfor %}
+                    <div class="card-actions justify-end">
+                        <a class="btn btn-primary" href="/gallery">Test Another</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 
 </div>
 {% endblock %}
@@ -17,4 +47,4 @@
 
 </style>
 {% endblock %}
-{% block head %}{% endblock %}    
+{% block head %}{% endblock %}

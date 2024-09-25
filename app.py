@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash,sess
 from werkzeug.utils import secure_filename
 import os
 from flask import jsonify
-
+from classifier import classify_image
 app = Flask(__name__)
 app.secret_key = 'supersecretmre'
 app.config['UPLOAD_FOLDER'] = "static/uploads"  
@@ -60,8 +60,8 @@ def select(filename):
     BASE_DIR = 'static/uploads'
     filepath = os.path.join(BASE_DIR, filename)
     session['file'] = "/"+filepath
-    flash('File selected successfully', 'success')
-    return redirect(url_for('gallery'))
+    classification = classify_image(filepath)
+    return render_template('results.html', classification=classification)
 
 @app.route('/classification', methods=['GET','POST'])
 def result():
