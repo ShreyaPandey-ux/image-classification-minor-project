@@ -10,42 +10,44 @@
     <style>
         .blob {
             position: absolute;
-            width: 500px;
-            height: 500px;
-            background: linear-gradient(180deg, rgba(47,184,255,0.42) 31.77%, rgba(158,236,217,0.42) 100%);
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(180deg, rgba(47,184,255,0.5) 30%, rgba(158,236,217,0.5) 80%);
             mix-blend-mode: color-dodge;
-            filter: blur(50px);
+            filter: blur(60px);
             border-radius: 50%;
         }
         .diagonal-section {
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
         }
         .reverse-diagonal-section {
-            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+            background: linear-gradient(180deg, #ecf0f1 0%, #bdc3c7 100%);
         }
         .hexagon {
             clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
         }
         @keyframes float {
             0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
             100% { transform: translateY(0px) rotate(0deg); }
         }
         .float-animation {
-            animation: float 6s ease-in-out infinite;
+            animation: float 8s ease-in-out infinite;
         }
     </style>
 </head>
 <body class="bg-gray-100 overflow-x-hidden">
     <!-- Hero Section with Blob Animation and Right Side Image -->
     <header class="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div class="blob top-0 left-0 opacity-70"></div>
-        <div class="blob bottom-0 right-0 opacity-70"></div>
+        <div class="blob top-0 left-0 opacity-60"></div>
+        <div class="blob bottom-0 right-0 opacity-60"></div>
         <div class="container mx-auto px-4 z-10 flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-8 md:mb-0">
-                <h1 class="text-6xl font-bold mb-4 text-gray-800">Image Classification <br>Reimagined</h1>
-                <p class="text-xl mb-8 text-gray-600">Pushing the boundaries of AI-powered image analysis</p>
-                <a href="#" class="bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300">Explore Now</a>
+                <h1 class="text-6xl font-extrabold mb-4 text-gray-900">Image Classification <br>Reimagined</h1>
+                <p class="text-xl mb-8 text-gray-700">Pushing the boundaries of AI-powered image analysis</p>
+                <a href="#" class="bg-blue-700 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-800 transition duration-300">Explore Now</a>
             </div>
             <div class="md:w-1/2 flex justify-center">
                 <img src="https://www.kdnuggets.com/wp-content/uploads/chugh_guide_train_image_classification_model_tensorflow_1.jpg" alt="AI Image Classification" class="rounded-lg shadow-2xl float-animation max-w-full h-auto">
@@ -54,19 +56,19 @@
     </header>
 
     <!-- Innovative Features Section -->
-    <section class="py-20 bg-gray-800 text-white diagonal-section">
+    <section class="py-20 text-white diagonal-section">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold mb-12 text-center">Revolutionary Features</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="hexagon bg-blue-500 p-6 aspect-square flex flex-col justify-center items-center text-center">
+                <div class="hexagon bg-blue-600 p-6 aspect-square flex flex-col justify-center items-center text-center">
                     <h3 class="text-2xl font-semibold mb-4">Quantum-Inspired Algorithms</h3>
                     <p>Harnessing the power of quantum computing principles for unparalleled accuracy.</p>
                 </div>
-                <div class="hexagon bg-green-500 p-6 aspect-square flex flex-col justify-center items-center text-center">
+                <div class="hexagon bg-green-600 p-6 aspect-square flex flex-col justify-center items-center text-center">
                     <h3 class="text-2xl font-semibold mb-4">Adaptive Learning</h3>
                     <p>Our AI evolves with each classification, continuously improving its performance.</p>
                 </div>
-                <div class="hexagon bg-purple-500 p-6 aspect-square flex flex-col justify-center items-center text-center">
+                <div class="hexagon bg-purple-600 p-6 aspect-square flex flex-col justify-center items-center text-center">
                     <h3 class="text-2xl font-semibold mb-4">Multi-Dimensional Analysis</h3>
                     <p>Explore image characteristics across multiple dimensions for deeper insights.</p>
                 </div>
@@ -75,110 +77,45 @@
     </section>
 
     <!-- Interactive Demo Section -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-12 text-center text-gray-800">Interactive Demo</h2>
+            <h2 class="text-4xl font-bold mb-12 text-center text-gray-900">Interactive Demo</h2>
             <div class="flex flex-col md:flex-row items-center justify-between">
                 <div class="md:w-1/2 mb-8 md:mb-0">
                     <img src="https://cdn.prod.website-files.com/64be86eaa29fa71f24b00685/663a4b42cc42c2693915837f_UeTTO1Vgu-GVkPaIwujIgK72d1Wiry0bEQwSvDV5ihYKs5sE2kftDaRa96TnRZcgOfc8WhR9xJO1PvRlh_Htfbs-rUx8D4cWpqOhx0NkGEaYnnZlmKM1E8Nmrfvn0fjnsx5DWsZ7M59U.png" alt="Interactive Demo" class="rounded-lg shadow-xl float-animation">
                 </div>
                 <div class="md:w-1/2 md:pl-12">
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-700">Experience Real-Time Classification</h3>
-                    <p class="text-gray-600 mb-6">Upload an image or use your camera to see our AI in action. Watch as it analyzes and classifies images in milliseconds.</p>
-                    <button class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition duration-300">Try Live Demo</button>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Experience Real-Time Classification</h3>
+                    <p class="text-gray-700 mb-6">Upload an image or use your camera to see our AI in action. Watch as it analyzes and classifies images in milliseconds.</p>
+                    <button class="bg-indigo-700 text-white px-6 py-2 rounded-full hover:bg-indigo-800 transition duration-300">Try Live Demo</button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Technology Stack Section -->
-    <section class="py-20 bg-gray-200 reverse-diagonal-section">
+    <section class="py-20 text-gray-900 reverse-diagonal-section">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-12 text-center text-gray-800">Cutting-Edge Tech Stack</h2>
+            <h2 class="text-4xl font-bold mb-12 text-center">Cutting-Edge Tech Stack</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
                 <div class="bg-white p-6 rounded-lg shadow-md text-center">
                     <img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2020/06/Screenshot-from-2020-06-30-12-39-37.png" alt="TensorFlow" class="mx-auto mb-4">
+                    <h3 class="text-xl font-semibold">TensorFlow</h3>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Flask_logo.svg/1280px-Flask_logo.svg.png" alt="Flask" class="mx-auto mb-4">
                     <h3 class="text-xl font-semibold">Flask</h3>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <img src="data:image/png;base64,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">
-                    <h3 class="text-xl font-semibold">pandas</h3>
+                    <img src="https://reactjs.org/logo-og.png" alt="React" class="mx-auto mb-4">
+                    <h3 class="text-xl font-semibold">React</h3>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <img src="https://logos-world.net/wp-content/uploads/2021/10/Python-Logo.png" alt="python" class="mx-auto mb-4">
-                    <h3 class="text-xl font-semibold">python</h3>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <img src="https://editor.analyticsvidhya.com/uploads/92870face%20detection.jpg" alt="mediaipe" class="mx-auto mb-4">
-                    <h3 class="text-xl font-semibold">mediapipe</h3>
+                    <img src="https://www.python.org/community/logos/python-logo-master-v3-TM.png" alt="Python" class="mx-auto mb-4">
+                    <h3 class="text-xl font-semibold">Python</h3>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Use Cases Carousel -->
-    <section class="py-20 bg-indigo-900 text-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-12 text-center">Transforming Industries</h2>
-            <div class="flex overflow-x-auto pb-8 space-x-8" id="usecase-carousel">
-                <div class="flex-shrink-0 w-80 bg-indigo-800 p-6 rounded-lg">
-                    <h3 class="text-2xl font-semibold mb-4">Healthcare</h3>
-                    <p>Assisting in medical image analysis for faster and more accurate diagnoses.</p>
-                </div>
-                <div class="flex-shrink-0 w-80 bg-indigo-800 p-6 rounded-lg">
-                    <h3 class="text-2xl font-semibold mb-4">Autonomous Vehicles</h3>
-                    <p>Enhancing object detection and road sign recognition for safer driving.</p>
-                </div>
-                <div class="flex-shrink-0 w-80 bg-indigo-800 p-6 rounded-lg">
-                    <h3 class="text-2xl font-semibold mb-4">Retail</h3>
-                    <p>Powering visual search and product recommendations for e-commerce platforms.</p>
-                </div>
-                <div class="flex-shrink-0 w-80 bg-indigo-800 p-6 rounded-lg">
-                    <h3 class="text-2xl font-semibold mb-4">Agriculture</h3>
-                    <p>Monitoring crop health and optimizing harvest times through aerial imagery.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="py-20 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl font-bold mb-8">Ready to Revolutionize Your Image Analysis?</h2>
-            <p class="text-xl mb-8">Join the next generation of AI-powered classification technology.</p>
-            <a href="#" class="bg-white text-blue-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-100 transition duration-300">Get Started Now</a>
-        </div>
-    </section>
-
-    <script>
-        gsap.registerPlugin(ScrollTrigger);
-
-        gsap.utils.toArray('.hexagon').forEach((hexagon, i) => {
-            gsap.from(hexagon, {
-                scrollTrigger: {
-                    trigger: hexagon,
-                    start: "top bottom",
-                    end: "top center",
-                    scrub: 1
-                },
-                opacity: 0,
-                scale: 0.5,
-                rotation: 180,
-                duration: 1
-            });
-        });
-
-        gsap.from("#usecase-carousel > div", {
-            scrollTrigger: {
-                trigger: "#usecase-carousel",
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1
-            },
-            x: (i, target) => (i + 1) * 100,
-            opacity: 0,
-            duration: 1
-        });
-    </script>
 </body>
 </html>

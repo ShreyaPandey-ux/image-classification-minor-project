@@ -48,13 +48,13 @@ def delete(image):
     filepath = os.path.join('static/uploads', image)
     os.remove(filepath)
     flash('File deleted successfully', 'success')
-    return redirect(url_for('gallery'))
+    return redirect(url_for('upload'))
 
 @app.route('/download/<image>')
 def download(image):
     return send_from_directory('static/uploads', image, as_attachment=True)
 
-@app.route('/classify/<filename>')
+@app.route('/select/<filename>')
 def select(filename):
     BASE_DIR = 'static/uploads'
     filepath = os.path.join(BASE_DIR, secure_filename(filename))
